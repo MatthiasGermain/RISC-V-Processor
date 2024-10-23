@@ -1,0 +1,37 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity compteur is
+    generic (
+        TAILLE : integer := 8
+    );
+    port (
+        din   : in  std_logic_vector(TAILLE-1 downto 0); -- entrée des données
+        clk   : in  std_logic;                            -- horloge
+        load  : in  std_logic;                            -- charge la valeur
+        reset : in  std_logic;                            -- remise à zéro
+        dout  : out std_logic_vector(TAILLE-1 downto 0)   -- sortie des données
+    );
+end entity compteur;
+
+architecture behavior of compteur is
+    signal counter : std_logic_vector(TAILLE-1 downto 0) := (others => '0'); -- signal interne pour le comptage
+begin
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                counter <= (others => '0'); -- remet à zéro
+            elsif load = '1' then
+                counter <= din; -- charge la valeur d'entrée
+            else
+                counter <= std_logic_vector(unsigned(counter) + 1); -- incrémente le compteur
+            end if;
+        end if;
+    end process;
+
+    -- sortie du compteur
+    dout <= counter;
+
+end architecture behavior;

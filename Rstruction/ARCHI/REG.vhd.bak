@@ -1,0 +1,39 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity RegisterFile is
+    port (
+        clk          : in std_logic;                          -- Horloge pour l'écriture
+        reset        : in std_logic;                          -- Reset pour remettre à zéro (facultatif)
+        Write_Enable : in std_logic;                          -- Activation de l'écriture
+        RA           : in std_logic_vector(4 downto 0);       -- Adresse du registre à lire sur BusA
+        RB           : in std_logic_vector(4 downto 0);       -- Adresse du registre à lire sur BusB
+        RW           : in std_logic_vector(4 downto 0);       -- Adresse du registre à écrire
+        BusW         : in std_logic_vector(31 downto 0);      -- Données à écrire dans le registre RW
+        BusA         : out std_logic_vector(31 downto 0);     -- Données lues du registre RA
+        BusB         : out std_logic_vector(31 downto 0)      -- Données lues du registre RB
+    );
+end entity RegisterFile;
+
+architecture Behavioral of RegisterFile is
+    -- Déclaration des 32 registres de 32 bits
+    type reg_array is array(31 downto 0) of std_logic_vector(31 downto 0);
+    signal registers : reg_array := (others => (others => '0'));  -- Initialisation des registres à 0
+
+begin
+    -- Processus de gestion des écritures dans les registres
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if Write_Enable = '1' and RW /= "00000" then  -- x0 ne peut pas être modifié (RW /= 0)
+                registers(to_integer(unsigned(RW))) <= BusW;  -- Écriture dans le registre RW
+            end if;
+        end if;
+    end process;
+
+    -- Lecture des registres RA et RB (asynchrone)
+    BusA <= (others => '0') when RA = "00000" else registers(to_integer(unsigned(RA)));  -- x0 toujours 0
+    BusB <= (others => '0') when RB = "00000" else registers(to_integer(unsigned(RB)));  -- x0 toujours 0
+
+end architecture Behavioral;

@@ -1,0 +1,67 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity tb_compteur is
+end entity tb_compteur;
+
+architecture arch_tb of tb_compteur is
+    component compteur is
+        generic (TAILLE : integer := 8);
+        port (
+            din : in std_logic_vector(TAILLE-1 downto 0);
+            clk : in std_logic;
+            load : in std_logic;
+            reset : in std_logic;
+            dout : out std_logic_vector(TAILLE-1 downto 0)
+        );
+    end component;
+
+    constant clk_demi_periode : time := 5 ns;
+    signal clk_t : std_logic := '0';
+    signal reset_t, load_t, fini : std_logic;
+    signal din_t, dout_t : std_logic_vector(7 downto 0);
+
+begin
+    -- Instance of the compteur component
+    compteur_1 : compteur
+        generic map (TAILLE => 8)
+        port map (din_t, clk_t, load_t, reset_t, dout_t);
+
+    -- Clock generation
+    clk_process : process
+    begin
+        clk_t <= not clk_t after clk_demi_periode;
+        wait for clk_demi_periode;
+    end process;
+
+    -- Test process
+    test_process : process
+    begin
+        -- Reset the compteur
+        reset_t <= '1';
+        wait for 2 * clk_demi_periode;
+        reset_t <= '0';
+
+        -- Load first value into compteur
+        din_t <= x"55";
+        load_t <= '1';
+        wait for 5 * clk_demi_periode;
+        load_t <= '0';
+
+        -- Load second value into compteur
+        din_t <= x"AA";
+        wait for 3 * clk_demi_periode;
+        load_t <= '1';
+        wait for 1 * clk_demi_periode;
+        load_t <= '0';
+
+        -- Load third value into compteur
+        din_t <= x"12";
+        wait for 7 * clk_demi_periode;
+
+        -- Finish the simulation
+        fini <= '1';
+        wait;
+    end process;
+
+end architecture arch_tb;

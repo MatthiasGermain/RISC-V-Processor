@@ -1,0 +1,208 @@
+# Simulation des registres RISC-V (32 registres x0 à x31)
+registers = [i for i in range(32)]  # x0 vaut toujours 0
+registers[0] = 0  # x0 est toujours 0
+
+# Fonction pour décoder une instruction R-Type
+def decode_R_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    rs2 = (instr >> 20) & 0x1F  # bits 20-24
+    funct7 = (instr >> 25) & 0x7F  # bits 25-31
+    return rd, rs1, rs2, funct3, funct7
+
+# Fonction pour décoder une instruction I-Type
+def decode_I_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    imm = (instr >> 20) & 0xFFF  # bits 20-31 (imm sur 12 bits)
+    
+    # Sign-extension pour immediate (imm)
+    if imm & 0x800:  # Si le bit de signe est 1
+        imm = imm - 0x1000  # étendre le signe
+
+    return rd, rs1, imm, funct3
+
+# Fonction pour décoder une instruction S-Type
+def decode_S_type(instr):
+    imm4_0 = (instr >> 7) & 0x1F  # bits 7-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    rs2 = (instr >> 20) & 0x1F  # bits 20-24
+    imm11_5 = (instr >> 25) & 0x7F  # bits 25-31
+    imm = (imm11_5 << 5) | imm4_0  # Concatenate imm[11:5] et imm[4:0]
+
+    # Sign-extension
+    if imm & 0x800:
+        imm = imm - 0x1000
+
+    return rs1, rs2, imm, funct3
+
+# Fonction pour décoder une instruction B-Type
+def decode_B_type(instr):
+    imm11 = (instr >> 7) & 0x1  # bit 7
+    imm4_1 = (instr >> 8) & 0xF  # bits 8-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    rs2 = (instr >> 20) & 0x1F  # bits 20-24
+    imm10_5 = (instr >> 25) & 0x3F  # bits 25-30
+    imm12 = (instr >> 31) & 0x1  # bit 31
+
+    # Concatenate imm[12|10:5|4:1|11]
+    imm = (imm12 << 12) | (imm11 << 11) | (imm10_5 << 5) | (imm4_1 << 1)
+
+    # Sign-extension
+    if imm & 0x1000:
+        imm = imm - 0x2000
+
+    return rs1, rs2, imm, funct3
+
+# Fonction pour décoder une instruction U-Type
+def decode_U_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    imm = instr & 0xFFFFF000  # bits 12-31 (immediate sur 20 bits)
+    return rd, imm
+
+# Fonction pour décoder une instruction J-Type
+def decode_J_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    imm19_12 = (instr >> 12) & 0xFF  # bits 12-19
+    imm11 = (instr >> 20) & 0x1  # bit 20
+    imm10_1 = (instr >> 21) & 0x3FF  # bits 21-30
+    imm20 = (instr >> 31) & 0x1  # bit 31
+
+    # Concatenate imm[20|10:1|11|19:12]
+    imm = (imm20 << 20) | (imm19_12 << 12) | (imm11 << 11) | (imm10_1 << 1)
+
+    # Sign-extension
+    if imm & 0x100000:
+        imm = imm - 0x200000
+
+    return rd, imm
+
+# Fonction pour exécuter les instructions
+def execute_instruction(instr, line_num):
+    opcode = instr & 0x7F  # Les 7 premiers bits
+    if opcode == 0x33:  # Instruction R-type
+        rd, rs1, rs2, funct3, funct7 = decode_R_type(instr)
+        if funct3 == 0 and funct7 == 0:  # ADD
+            registers[rd] = registers[rs1] + registers[rs2]
+            print(f"{line_num}: R-type {instr:08x}: [add x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 0 and funct7 == 0x20:  # SUB
+            registers[rd] = registers[rs1] - registers[rs2]
+            print(f"{line_num}: R-type {instr:08x}: [sub x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 1:  # SLL
+            registers[rd] = registers[rs1] << (registers[rs2] & 0x1F)
+            print(f"{line_num}: R-type {instr:08x}: [sll x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 2:  # SLT
+            registers[rd] = 1 if registers[rs1] < registers[rs2] else 0
+            print(f"{line_num}: R-type {instr:08x}: [slt x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 3:  # SLTU
+            registers[rd] = 1 if (registers[rs1] & 0xFFFFFFFF) < (registers[rs2] & 0xFFFFFFFF) else 0
+            print(f"{line_num}: R-type {instr:08x}: [sltu x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 4:  # XOR
+            registers[rd] = registers[rs1] ^ registers[rs2]
+            print(f"{line_num}: R-type {instr:08x}: [xor x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 5 and funct7 == 0x00:  # SRL
+            registers[rd] = (registers[rs1] & 0xFFFFFFFF) >> (registers[rs2] & 0x1F)
+            print(f"{line_num}: R-type {instr:08x}: [srl x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 5 and funct7 == 0x20:  # SRA
+            registers[rd] = registers[rs1] >> (registers[rs2] & 0x1F)
+            print(f"{line_num}: R-type {instr:08x}: [sra x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 6:  # OR
+            registers[rd] = registers[rs1] | registers[rs2]
+            print(f"{line_num}: R-type {instr:08x}: [or x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        elif funct3 == 7:  # AND
+            registers[rd] = registers[rs1] & registers[rs2]
+            print(f"{line_num}: R-type {instr:08x}: [and x{rd}, x{rs1}, x{rs2}] | x{rd} = {registers[rd]}")
+        else:
+            print(f"{line_num}: R-type {instr:08x}: Instruction non supportée")
+
+    elif opcode == 0x13:  # Instruction I-type
+        rd, rs1, imm, funct3 = decode_I_type(instr)
+        
+        if funct3 == 0:  # ADDI (Add Immediate)
+            registers[rd] = registers[rs1] + imm
+            print(f"{line_num}: I-type {instr:08x}: [addi x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 1 and (imm & 0xFE0) == 0:  # SLLI (Shift Left Logical Immediate)
+            shamt = imm & 0x1F  # Le nombre de bits de décalage
+            registers[rd] = registers[rs1] << shamt
+            print(f"{line_num}: I-type {instr:08x}: [slli x{rd}, x{rs1}, {shamt}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 2:  # SLTI (Set Less Than Immediate)
+            registers[rd] = 1 if registers[rs1] < imm else 0
+            print(f"{line_num}: I-type {instr:08x}: [slti x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 3:  # SLTIU (Set Less Than Immediate Unsigned)
+            registers[rd] = 1 if (registers[rs1] & 0xFFFFFFFF) < (imm & 0xFFFFFFFF) else 0
+            print(f"{line_num}: I-type {instr:08x}: [sltiu x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 4:  # XORI (XOR Immediate)
+            registers[rd] = registers[rs1] ^ imm
+            print(f"{line_num}: I-type {instr:08x}: [xori x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 5:  # SRLI/SRAI (Shift Right Logical/Arithmetic Immediate)
+            shamt = imm & 0x1F  # Le nombre de bits de décalage
+            funct7 = (imm >> 5) & 0x7F  # Les bits de funct7 pour déterminer SRLI ou SRAI
+            
+            if funct7 == 0x00:  # SRLI (Shift Right Logical Immediate)
+                registers[rd] = (registers[rs1] & 0xFFFFFFFF) >> shamt
+                print(f"{line_num}: I-type {instr:08x}: [srli x{rd}, x{rs1}, {shamt}] | x{rd} = {registers[rd]}")
+            
+            elif funct7 == 0x20:  # SRAI (Shift Right Arithmetic Immediate)
+                registers[rd] = registers[rs1] >> shamt
+                print(f"{line_num}: I-type {instr:08x}: [srai x{rd}, x{rs1}, {shamt}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 6:  # ORI (OR Immediate)
+            registers[rd] = registers[rs1] | imm
+            print(f"{line_num}: I-type {instr:08x}: [ori x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        elif funct3 == 7:  # ANDI (AND Immediate)
+            registers[rd] = registers[rs1] & imm
+            print(f"{line_num}: I-type {instr:08x}: [andi x{rd}, x{rs1}, {imm}] | x{rd} = {registers[rd]}")
+        
+        else:
+            print(f"{line_num}: I-type {instr:08x}: Instruction non supportée")
+
+
+    elif opcode == 0x23:  # Instruction S-type (ex: sw)
+        rs1, rs2, imm, funct3 = decode_S_type(instr)
+        if funct3 == 0:  # SW
+            print(f"{line_num}: S-type {instr:08x}: [sw x{rs2}, {imm}(x{rs1})] | mémoire[{imm} + x{rs1}] = x{rs2}")
+        # Ajouter d'autres S-type ici
+
+    elif opcode == 0x63:  # Instruction B-type (ex: beq)
+        rs1, rs2, imm, funct3 = decode_B_type(instr)
+        if funct3 == 0:  # BEQ
+            if registers[rs1] == registers[rs2]:
+                print(f"{line_num}: B-type {instr:08x}: [beq x{rs1}, x{rs2}, {imm}] | saut à PC + {imm}")
+            else:
+                print(f"{line_num}: B-type {instr:08x}: [beq x{rs1}, x{rs2}, {imm}] | pas de saut")
+
+    elif opcode == 0x37:  # Instruction U-type (LUI)
+        rd, imm = decode_U_type(instr)
+        registers[rd] = imm
+        print(f"{line_num}: U-type {instr:08x}: [lui x{rd}, {imm}] | x{rd} = {registers[rd]}")
+
+    elif opcode == 0x6F:  # Instruction J-type (JAL)
+        rd, imm = decode_J_type(instr)
+        registers[rd] = registers[0] + imm  # Simuler le saut
+        print(f"{line_num}: J-type {instr:08x}: [jal x{rd}, {imm}] | x{rd} = {registers[rd]}")
+
+    else:
+        print(f"{line_num}: Instruction non supportée: {instr:08x}")
+
+# Fonction principale pour lire et exécuter le fichier hex
+def run_simulation(file_path):
+    with open(file_path, 'r') as f:
+        lines = f.readlines()
+    
+    # Pour chaque ligne dans le fichier, exécuter l'instruction
+    for line_num, line in enumerate(lines, start=1):
+        instr = int(line.strip(), 16)  # Convertir l'instruction hexadécimale en entier
+        execute_instruction(instr, line_num)
+
+# Exécution du fichier .hex
+run_simulation('add_01.hex')
