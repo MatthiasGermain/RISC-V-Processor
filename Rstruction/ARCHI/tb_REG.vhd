@@ -79,6 +79,7 @@ begin
         end loop;
         we_tb <= '0';  -- Désactiver l'écriture
 		  
+			-- Lecture des valeurs des registres
 		  for i in 0 to 8 loop
             RA_tb <= std_logic_vector(to_unsigned(i, 5));
             RB_tb <= std_logic_vector(to_unsigned(i, 5));

@@ -28,7 +28,7 @@ begin
             when "0101" =>  -- XOR
                 res <= opA xor opB;
             when "0010" =>  -- Décalage à gauche (sll)
-                res <= std_logic_vector(shift_left(signed(opA), to_integer(unsigned(opB(4 downto 0)))));  -- Assure-toi que le décalage est fait correctement
+                res <= std_logic_vector(shift_left(signed(opA), to_integer(unsigned(opB(4 downto 0))))); 
             when "0110" =>  -- Décalage à droite logique (srl)
                 res <= std_logic_vector(shift_right(signed(opA), to_integer(unsigned(opB(4 downto 0)))));
             when "0111" =>  -- Décalage à droite arithmétique (sra)

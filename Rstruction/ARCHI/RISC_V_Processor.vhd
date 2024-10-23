@@ -172,7 +172,7 @@ begin
             sel => RI_sel_internal,
             mux_in1 => reg_B_internal,
             mux_in2 => immExt_internal,
-            mux_out => mux_out_internal -- Utilisez le signal temporaire ici
+            mux_out => mux_out_internal
         );
 
     -- Instance des registres
@@ -185,7 +185,7 @@ begin
             RW           => instr_internal(11 downto 7),   -- Adresse destination
             BusW         => alu_result_internal,           -- Résultat ALU
             BusA         => reg_A_internal,
-            BusB         => reg_B_internal -- Utilisez le signal temporaire ici
+            BusB         => reg_B_internal
         );
 
     -- Instance de l'ALU
@@ -193,7 +193,7 @@ begin
         port map (
             aluOp => aluOp_internal,
             opA   => reg_A_internal,
-            opB   => mux_out_internal, -- Utilisez le signal temporaire ici
+            opB   => mux_out_internal,
             res   => alu_result_internal
         );
 

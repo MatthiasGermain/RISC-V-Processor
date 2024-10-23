@@ -9,7 +9,7 @@ architecture test of tb_PC is
     -- Déclaration des signaux de test
     signal clk_t         : std_logic := '0';
     signal reset_t       : std_logic := '0';
-    signal load_t        : std_logic := '0';  -- Ajout du signal load pour tester le chargement direct
+    signal load_t        : std_logic := '0';
     signal Write_Enable_t: std_logic := '0';
     signal Data_In_t     : std_logic_vector(31 downto 0) := (others => '0');
     signal Data_Out_t    : std_logic_vector(31 downto 0);
@@ -22,7 +22,7 @@ architecture test of tb_PC is
         port (
             clk         : in  std_logic;
             reset       : in  std_logic;
-            load        : in  std_logic;                            -- Ajout du port load
+            load        : in  std_logic;
             Write_Enable: in  std_logic;
             Data_In     : in  std_logic_vector(N-1 downto 0);
             Data_Out    : out std_logic_vector(N-1 downto 0)
@@ -36,7 +36,7 @@ begin
         port map (
             clk         => clk_t,
             reset       => reset_t,
-            load        => load_t,         -- Connexion du signal load
+            load        => load_t,
             Write_Enable=> Write_Enable_t,
             Data_In     => Data_In_t,
             Data_Out    => Data_Out_t
