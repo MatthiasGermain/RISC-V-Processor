@@ -10,12 +10,7 @@ This repository contains two main components:
 
 ### Example Output from Verifython:
 
-1: I-type 06400f93: [addi x31, x0, 100] | x31 = 100
-2: I-type 00100093: [addi x1, x0, 1] | x1 = 1
-3: R-type 001080b3: [add x1, x1, x1] | x1 = 2
-4: I-type 00100093: [addi x1, x0, 1] | x1 = 1
-5: R-type 01f080b3: [add x1, x1, x31] | x1 = 101
-6: I-type 00200113: [addi x2, x0, 2] | x2 = 2
+1: I-type 06400f93: [addi x31, x0, 100] | x31 = 100 2: I-type 00100093: [addi x1, x0, 1] | x1 = 1 3: R-type 001080b3: [add x1, x1, x1] | x1 = 2 4: I-type 00100093: [addi x1, x0, 1] | x1 = 1 5: R-type 01f080b3: [add x1, x1, x31] | x1 = 101 6: I-type 00200113: [addi x2, x0, 2] | x2 = 2
 
 ### How to Use
 
