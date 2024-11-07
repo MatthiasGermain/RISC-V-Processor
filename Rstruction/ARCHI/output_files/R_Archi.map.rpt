@@ -1,5 +1,5 @@
 Analysis & Elaboration report for R_Archi
-Thu Oct 24 00:48:35 2024
+Wed Nov  6 12:01:35 2024
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -12,11 +12,14 @@ Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
   4. Parameter Settings for User Entity Instance: PC:u_PC
   5. Parameter Settings for User Entity Instance: IMEM_FILE:u_IMEM
   6. Parameter Settings for User Entity Instance: mux2to1:u_mux2to1
-  7. Parameter Settings for User Entity Instance: REG:u_REG
-  8. Analysis & Elaboration Settings
-  9. Port Connectivity Checks: "Imm_ext:u_Imm_ext"
- 10. Port Connectivity Checks: "PC:u_PC"
- 11. Analysis & Elaboration Messages
+  7. Parameter Settings for User Entity Instance: mux2to1:u_mux2to1_alu_dmem
+  8. Parameter Settings for User Entity Instance: REG:u_REG
+  9. Parameter Settings for User Entity Instance: DMEM:u_DMEM
+ 10. Analysis & Elaboration Settings
+ 11. Port Connectivity Checks: "DMEM:u_DMEM"
+ 12. Port Connectivity Checks: "Imm_ext:u_Imm_ext"
+ 13. Port Connectivity Checks: "PC:u_PC"
+ 14. Analysis & Elaboration Messages
 
 
 
@@ -43,7 +46,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                 ;
 +-------------------------------+------------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Thu Oct 24 00:48:35 2024          ;
+; Analysis & Elaboration Status ; Successful - Wed Nov  6 12:01:35 2024          ;
 ; Quartus Prime Version         ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                 ; R_Archi                                        ;
 ; Top-level Entity Name         ; RISC_V_Processor                               ;
@@ -92,7 +95,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; data_width     ; 32         ; Signed Integer                  ;
 ; addr_width     ; 8          ; Signed Integer                  ;
 ; mem_depth      ; 100        ; Signed Integer                  ;
-; init_file      ; add_01.hex ; String                          ;
+; init_file      ; add_03.hex ; String                          ;
 +----------------+------------+---------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -107,6 +110,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mux2to1:u_mux2to1_alu_dmem ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +--------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: REG:u_REG ;
 +----------------+-------+-------------------------------+
@@ -115,6 +128,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; N_REGISTERS    ; 32    ; Signed Integer                ;
 ; WIDTH          ; 32    ; Signed Integer                ;
 +----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DMEM:u_DMEM ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 32    ; Signed Integer                  ;
+; addr_width     ; 3     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -205,6 +229,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
++-----------------------------------------+
+; Port Connectivity Checks: "DMEM:u_DMEM" ;
++------+-------+----------+---------------+
+; Port ; Type  ; Severity ; Details       ;
++------+-------+----------+---------------+
+; addr ; Input ; Info     ; Stuck at GND  ;
++------+-------+----------+---------------+
+
+
 +-----------------------------------------------+
 ; Port Connectivity Checks: "Imm_ext:u_Imm_ext" ;
 +----------+-------+----------+-----------------+
@@ -230,12 +263,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Thu Oct 24 00:48:22 2024
+    Info: Processing started: Wed Nov  6 12:01:23 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off R_Archi -c R_Archi --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file decodeur.vhd
-    Info (12022): Found design unit 1: decodeur-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd Line: 15
+    Info (12022): Found design unit 1: decodeur-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd Line: 18
     Info (12023): Found entity 1: decodeur File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file tb_decodeur.vhd
     Info (12022): Found design unit 1: tb_decodeur-test File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/tb_decodeur.vhd Line: 8
@@ -247,7 +280,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file tb_alu.
     Info (12022): Found design unit 1: tb_ALU-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/tb_ALU.vhd Line: 8
     Info (12023): Found entity 1: tb_ALU File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/tb_ALU.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file dmem.vhd
-    Info (12022): Found design unit 1: DMEM-rtl File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd Line: 21
+    Info (12022): Found design unit 1: DMEM-behav File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd Line: 21
     Info (12023): Found entity 1: DMEM File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file single_port_ram_with_init.vhd
     Info (12022): Found design unit 1: single_port_ram_with_init-rtl File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/single_port_ram_with_init.vhd Line: 27
@@ -297,22 +330,30 @@ Info (12021): Found 2 design units, including 1 entities, in source file tb_imm_
 Info (12021): Found 2 design units, including 1 entities, in source file mux2to1.vhd
     Info (12022): Found design unit 1: mux2to1-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd Line: 16
     Info (12023): Found entity 1: mux2to1 File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file lm.vhd
+    Info (12022): Found design unit 1: LM-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd Line: 16
+    Info (12023): Found entity 1: LM File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file tb_lm.vhd
+    Info (12022): Found design unit 1: tb_LM-Behavioral File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/tb_LM.vhd Line: 8
+    Info (12023): Found entity 1: tb_LM File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/tb_LM.vhd Line: 5
 Info (12127): Elaborating entity "RISC_V_Processor" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at RISC_V_Processor.vhd(16): used implicit default value for signal "instr_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 16
 Warning (10541): VHDL Signal Declaration warning at RISC_V_Processor.vhd(17): used implicit default value for signal "aluOp" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 17
 Warning (10541): VHDL Signal Declaration warning at RISC_V_Processor.vhd(18): used implicit default value for signal "write_enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 18
 Warning (10541): VHDL Signal Declaration warning at RISC_V_Processor.vhd(19): used implicit default value for signal "load_pc" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 19
-Info (12128): Elaborating entity "PC" for hierarchy "PC:u_PC" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 134
-Info (12128): Elaborating entity "IMEM_FILE" for hierarchy "IMEM_FILE:u_IMEM" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 145
-Info (12128): Elaborating entity "decodeur" for hierarchy "decodeur:u_decodeur" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 152
-Info (12128): Elaborating entity "Imm_ext" for hierarchy "Imm_ext:u_Imm_ext" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 162
-Info (12128): Elaborating entity "mux2to1" for hierarchy "mux2to1:u_mux2to1" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 170
-Info (12128): Elaborating entity "REG" for hierarchy "REG:u_REG" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 179
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:u_ALU" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 192
+Info (12128): Elaborating entity "PC" for hierarchy "PC:u_PC" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 172
+Info (12128): Elaborating entity "IMEM_FILE" for hierarchy "IMEM_FILE:u_IMEM" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 183
+Info (12128): Elaborating entity "decodeur" for hierarchy "decodeur:u_decodeur" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 190
+Info (12128): Elaborating entity "Imm_ext" for hierarchy "Imm_ext:u_Imm_ext" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 203
+Info (12128): Elaborating entity "mux2to1" for hierarchy "mux2to1:u_mux2to1" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 211
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:u_ALU" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 220
+Info (12128): Elaborating entity "REG" for hierarchy "REG:u_REG" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 238
+Info (12128): Elaborating entity "DMEM" for hierarchy "DMEM:u_DMEM" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 251
+Info (12128): Elaborating entity "LM" for hierarchy "LM:u_LM" File: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd Line: 265
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4861 megabytes
-    Info: Processing ended: Thu Oct 24 00:48:35 2024
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:30
+    Info: Peak virtual memory: 4857 megabytes
+    Info: Processing ended: Wed Nov  6 12:01:35 2024
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:11
 
 

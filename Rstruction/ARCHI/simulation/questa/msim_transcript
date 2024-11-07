@@ -24,133 +24,157 @@
 # Copying c:/intelfpga_lite/22.1std/questa_fe/win64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:05 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd 
+# Start time: 12:02:18 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity decodeur
 # -- Compiling architecture Behavioral of decodeur
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(31): (vcom-1014) Array type case expression must be of a locally static subtype.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(32): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(33): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(34): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(35): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(36): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(37): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(38): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(39): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(40): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/decodeur.vhd(41): (vcom-1937) Choice in CASE statement alternative must be locally static.
-# End time: 00:35:05 on Oct 24,2024, Elapsed time: 0:00:00
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(39): (vcom-1014) Array type case expression must be of a locally static subtype.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(40): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(41): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(42): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(43): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(44): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(45): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(46): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(47): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(48): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd(49): (vcom-1937) Choice in CASE statement alternative must be locally static.
+# End time: 12:02:18 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 11
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/ALU.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:05 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/ALU.vhd 
+# Start time: 12:02:18 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity ALU
 # -- Compiling architecture Behavioral of ALU
-# End time: 00:35:05 on Oct 24,2024, Elapsed time: 0:00:00
+# End time: 12:02:18 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/PC.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:05 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/PC.vhd 
+# Start time: 12:02:18 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity DMEM
+# -- Compiling architecture behav of DMEM
+# End time: 12:02:18 on Nov 06,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd}
+# Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 12:02:18 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity PC
 # -- Compiling architecture Behavioral of PC
-# End time: 00:35:05 on Oct 24,2024, Elapsed time: 0:00:00
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/REG.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:05 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/REG.vhd 
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity REG
 # -- Compiling architecture Behavioral of REG
-# End time: 00:35:06 on Oct 24,2024, Elapsed time: 0:00:01
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:06 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd 
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity IMEM_FILE
 # -- Compiling architecture behav of IMEM_FILE
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd(56): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd(57): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd(59): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
-# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/IMEM_FILE.vhd(65): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
-# End time: 00:35:06 on Oct 24,2024, Elapsed time: 0:00:00
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd(56): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd(57): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd(59): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
+# ** Warning: C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd(65): (vcom-1283) Cannot reference file "filePtr" inside pure function "memInit".
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 4
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/RISC_V_Processor.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:06 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/RISC_V_Processor.vhd 
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity RISC_V_Processor
 # -- Compiling architecture Behavioral of RISC_V_Processor
-# End time: 00:35:06 on Oct 24,2024, Elapsed time: 0:00:00
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/Imm_ext.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:06 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/Imm_ext.vhd 
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity Imm_ext
 # -- Compiling architecture Behavioral of Imm_ext
-# End time: 00:35:06 on Oct 24,2024, Elapsed time: 0:00:00
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/mux2to1.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:06 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/mux2to1.vhd 
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Compiling entity mux2to1
 # -- Compiling architecture Behavioral of mux2to1
-# End time: 00:35:07 on Oct 24,2024, Elapsed time: 0:00:01
+# End time: 12:02:19 on Nov 06,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd}
+# Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 12:02:19 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity LM
+# -- Compiling architecture Behavioral of LM
+# End time: 12:02:20 on Nov 06,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
-# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd}
+# vcom -93 -work work {C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd}
 # Questa Intel FPGA Edition-64 vcom 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 00:35:07 on Oct 24,2024
-# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd 
+# Start time: 12:02:20 on Nov 06,2024
+# vcom -reportprogress 300 -93 -work work C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
 # -- Compiling entity RISC_V_Processor_simplified_tb
 # -- Compiling architecture Behavioral of RISC_V_Processor_simplified_tb
-# End time: 00:35:07 on Oct 24,2024, Elapsed time: 0:00:00
+# End time: 12:02:20 on Nov 06,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L cyclonev_hssi -L rtl_work -L work -voptargs="+acc"  RISC_V_Processor_simplified_tb
 # vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L cyclonev_hssi -L rtl_work -L work -voptargs=""+acc"" RISC_V_Processor_simplified_tb 
-# Start time: 00:35:07 on Oct 24,2024
+# Start time: 12:02:20 on Nov 06,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
@@ -163,10 +187,13 @@
 # Loading work.decodeur(behavioral)#1
 # Loading work.imm_ext(behavioral)#1
 # Loading work.mux2to1(behavioral)#1
-# Loading work.reg(behavioral)#1
 # Loading work.alu(behavioral)#1
+# Loading work.reg(behavioral)#1
+# Loading work.dmem(behav)#1
+# Loading work.lm(behavioral)#1
 # 
 # add wave *
+# Causality operation skipped due to absence of debug database file
 # view structure
 # .main_pane.structure.interior.cs.body.struct
 # view signals
@@ -178,6 +205,5 @@
 #    Time: 0 ps  Iteration: 0  Instance: /risc_v_processor_simplified_tb/uut/u_REG
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ps  Iteration: 0  Instance: /risc_v_processor_simplified_tb/uut/u_IMEM
-# Causality operation skipped due to absence of debug database file
-# End time: 00:39:37 on Oct 24,2024, Elapsed time: 0:04:30
+# End time: 12:02:45 on Nov 06,2024, Elapsed time: 0:00:25
 # Errors: 0, Warnings: 3

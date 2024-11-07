@@ -81,10 +81,95 @@ def decode_J_type(instr):
 
     return rd, imm
 
+# Simulation des registres RISC-V (32 registres x0 à x31)
+registers = [i for i in range(32)]  # x0 vaut toujours 0
+registers[0] = 0  # x0 est toujours 0
+
+# Simulation de la mémoire (par exemple 1024 octets)
+memory = [0] * 1024  # 1024 octets de mémoire initialisés à 0
+memory[0] = 0xFFFFFFFF  # Exemple de données à l'adresse 0
+memory[1] = 0xAAAAAAAA  # Exemple de données à l'adresse 1
+memory[2] = 0xBBBBBBBB  # Exemple de données à l'adresse 2
+memory[3] = 0xCCCCCCCC  # Exemple de données à l'adresse 3
+memory[4] = 0xDDDDDDDD  # Exemple de données à l'adresse 4
+memory[5] = 0xEEEEEEEE  # Exemple de données à l'adresse 5
+memory[6] = 0xFAFAFAFA  # Exemple de données à l'adresse 6
+memory[7] = 0xFBFBFBFB  # Exemple de données à l'adresse 7
+memory[8] = 0xFCFCFCFC  # Exemple de données à l'adresse 8
+memory[9] = 0xFDFDFDFD  # Exemple de données à l'adresse 9
+memory[10] = 0xFEFEFEFE  # Exemple de données à l'adresse 10
+
+
+# Fonction pour décoder une instruction R-Type
+def decode_R_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    rs2 = (instr >> 20) & 0x1F  # bits 20-24
+    funct7 = (instr >> 25) & 0x7F  # bits 25-31
+    return rd, rs1, rs2, funct3, funct7
+
+# Fonction pour décoder une instruction I-Type
+def decode_I_type(instr):
+    rd = (instr >> 7) & 0x1F  # bits 7-11
+    funct3 = (instr >> 12) & 0x7  # bits 12-14
+    rs1 = (instr >> 15) & 0x1F  # bits 15-19
+    imm = (instr >> 20) & 0xFFF  # bits 20-31 (imm sur 12 bits)
+    
+    # Sign-extension pour immediate (imm)
+    if imm & 0x800:  # Si le bit de signe est 1
+        imm = imm - 0x1000  # étendre le signe
+
+    return rd, rs1, imm, funct3
+
+# Fonction pour charger une valeur depuis la mémoire
+def load_from_memory(address, size):
+    # Vérifie que l'adresse est valide
+    if 0 <= address < len(memory):
+        if size == 1:  # Load Byte
+            return memory[address]
+        elif size == 2:  # Load Halfword
+            return (memory[address] | (memory[address + 1] << 8)) & 0xFFFF
+        elif size == 4:  # Load Word
+            return (memory[address] | (memory[address + 1] << 8) | (memory[address + 2] << 16) | (memory[address + 3] << 24)) & 0xFFFFFFFF
+    return 0  # Retourne 0 si l'adresse est hors de portée
+
 # Fonction pour exécuter les instructions
 def execute_instruction(instr, line_num):
     opcode = instr & 0x7F  # Les 7 premiers bits
-    if opcode == 0x33:  # Instruction R-type
+    if opcode == 0x03:  # Instruction de type I - LOAD
+        rd, rs1, imm, funct3 = decode_I_type(instr)
+        address = registers[rs1] + imm  # Calcul de l'adresse effective
+
+        if funct3 == 0:  # LB (Load Byte)
+            value = load_from_memory(address, 1)
+            if value & 0x80:  # Extension de signe pour un octet (8 bits)
+                value = value - 0x100
+            registers[rd] = value
+            print(f"{line_num}: I-type {instr:08x}: [lb x{rd}, {imm}(x{rs1})] | x{rd} = {registers[rd]}")
+
+        elif funct3 == 1:  # LH (Load Halfword)
+            value = load_from_memory(address, 2)
+            if value & 0x8000:  # Extension de signe pour un halfword (16 bits)
+                value = value - 0x10000
+            registers[rd] = value
+            print(f"{line_num}: I-type {instr:08x}: [lh x{rd}, {imm}(x{rs1})] | x{rd} = {registers[rd]}")
+
+        elif funct3 == 2:  # LW (Load Word)
+            registers[rd] = load_from_memory(address, 4)
+            print(f"{line_num}: I-type {instr:08x}: [lw x{rd}, {imm}(x{rs1})] | x{rd} = {registers[rd]}")
+
+        elif funct3 == 4:  # LBU (Load Byte Unsigned)
+            registers[rd] = load_from_memory(address, 1) & 0xFF  # Charger sans signe
+            print(f"{line_num}: I-type {instr:08x}: [lbu x{rd}, {imm}(x{rs1})] | x{rd} = {registers[rd]}")
+
+        elif funct3 == 5:  # LHU (Load Halfword Unsigned)
+            registers[rd] = load_from_memory(address, 2) & 0xFFFF  # Charger sans signe
+            print(f"{line_num}: I-type {instr:08x}: [lhu x{rd}, {imm}(x{rs1})] | x{rd} = {registers[rd]}")
+
+    # [Reste du code pour les autres types d'instructions ...]
+
+    elif opcode == 0x33:  # Instruction R-type
         rd, rs1, rs2, funct3, funct7 = decode_R_type(instr)
         if funct3 == 0 and funct7 == 0:  # ADD
             registers[rd] = registers[rs1] + registers[rs2]
@@ -205,4 +290,4 @@ def run_simulation(file_path):
         execute_instruction(instr, line_num)
 
 # Exécution du fichier .hex
-run_simulation('add_01.hex')
+run_simulation('xori_01.hex')

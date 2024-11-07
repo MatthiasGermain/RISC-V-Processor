@@ -13,14 +13,14 @@ entity DMEM is
         clk   : in std_logic;
         addr  : in natural range 0 to 2**ADDR_WIDTH - 1;
         data  : in std_logic_vector(DATA_WIDTH-1 downto 0);
-        we    : in std_logic := '1';
+        we    : in std_logic;  -- Pas de valeur par défaut pour éviter l'activation d'écriture par défaut
         q     : out std_logic_vector(DATA_WIDTH-1 downto 0)
     );
 end DMEM;
 
-architecture rtl of DMEM is
+architecture behav of DMEM is
 
-    -- Build a 2-D array type for the DMEM
+    -- Définition de la mémoire comme un tableau de mots de DATA_WIDTH bits
     subtype word_t is std_logic_vector(DATA_WIDTH-1 downto 0);
     type memory_t is array(2**ADDR_WIDTH-1 downto 0) of word_t;
 
@@ -29,7 +29,7 @@ architecture rtl of DMEM is
         return memory_t is 
         variable tmp : memory_t := (others => (others => '0'));
     begin 
-        tmp(0) := x"FFFFFFFF";
+        tmp(0) := x"FFAABBCC";
         tmp(1) := x"AAAAAAAA";
         tmp(2) := x"BBBBBBBB";
         tmp(3) := x"CCCCCCCC";
@@ -40,23 +40,23 @@ architecture rtl of DMEM is
         return tmp;
     end init_ram;	 
 
-    -- DMEM signal with initial values
+    -- Signal interne pour stocker la mémoire DMEM avec valeurs initialisées
     signal DMEM : memory_t := init_ram;
 
 begin
 
-    -- Asynchronous read and synchronous write process
+    -- Processus pour l'écriture synchrone
     process(clk)
     begin
         if rising_edge(clk) then
-            -- Synchronous write on rising edge of clock
+            -- Écriture synchrone lorsque `we` est actif
             if we = '1' then
                 DMEM(addr) <= data;
             end if;
         end if;
     end process;
 
-    -- Asynchronous read directly from the memory
-    q <= DMEM(addr);  -- Directly output data based on address
+    -- Lecture asynchrone directement à partir de la mémoire
+    q <= DMEM(addr);  -- Lecture asynchrone basée sur l'adresse
 
-end rtl;
+end behav;

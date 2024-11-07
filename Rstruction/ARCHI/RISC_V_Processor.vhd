@@ -27,21 +27,30 @@ end RISC_V_Processor;
 architecture Behavioral of RISC_V_Processor is
 
     -- Déclaration des signaux pour connecter les différentes entités internes
-    signal pc_internal      : std_logic_vector(31 downto 0);
-    signal instr_internal   : std_logic_vector(31 downto 0);
-    signal immExt_internal  : std_logic_vector(31 downto 0);
-    signal RI_sel_internal  : std_logic;
-    signal alu_result_internal : std_logic_vector(31 downto 0);
+    signal result_internal       : std_logic_vector(31 downto 0);
+	 signal pc_internal           : std_logic_vector(31 downto 0) := (others => '0');
+	 signal instr_internal        : std_logic_vector(31 downto 0) := (others => '0');
+    signal immExt_internal       : std_logic_vector(31 downto 0);
+    signal RI_sel_internal       : std_logic;
+    signal alu_result_internal   : std_logic_vector(31 downto 0);
     signal reg_A_internal, reg_B_internal : std_logic_vector(31 downto 0);
-    signal aluOp_internal   : std_logic_vector(3 downto 0);
+    signal aluOp_internal        : std_logic_vector(3 downto 0);
     signal write_enable_internal : std_logic;
-    signal load_pc_internal : std_logic;
+    signal load_pc_internal      : std_logic;
+    signal loadAcc_internal      : std_logic;
+    signal wrMem_internal        : std_logic;
 
     -- Signaux de débogage internes
     signal RA_internal, RB_internal, RW_internal : std_logic_vector(4 downto 0);
 
     -- Signal temporaire pour le multiplexeur
-    signal mux_out_internal : std_logic_vector(31 downto 0);
+    signal mux_out_internal      : std_logic_vector(31 downto 0);
+
+    -- Signaux pour DMEM
+    signal dmem_data_out         : std_logic_vector(31 downto 0);
+	 signal dataOut_LM : std_logic_vector(31 downto 0); -- Sortie ajustée de LM
+	 signal lwtype_internal : std_logic_vector(2 downto 0); -- type de chargement (funct3)
+
 
     -- Instances des composants
     
@@ -66,7 +75,7 @@ architecture Behavioral of RISC_V_Processor is
             DATA_WIDTH  : natural := 32;
             ADDR_WIDTH  : natural := 8;
             MEM_DEPTH   : natural := 100;
-            INIT_FILE   : string  := "add_01.hex"
+            INIT_FILE   : string  := "add_03.hex"
         );
         port (
             address  : in  std_logic_vector(ADDR_WIDTH - 1 downto 0);
@@ -81,7 +90,10 @@ architecture Behavioral of RISC_V_Processor is
             aluOp       : out std_logic_vector(3 downto 0);
             WriteEnable : out std_logic;
             load        : out std_logic;
-            RI_sel      : out std_logic                       
+            RI_sel      : out std_logic;
+            loadAcc     : out std_logic;
+            wrMem       : out std_logic;
+				lwtype		: out std_logic_vector(2 downto 0)
         );
     end component;
 
@@ -128,6 +140,32 @@ architecture Behavioral of RISC_V_Processor is
         );
     end component;
 
+    -- Mémoire de données (DMEM)
+    component DMEM is
+        generic (
+            DATA_WIDTH : natural := 32;
+            ADDR_WIDTH : natural := 3  -- 8 mots
+        );
+        port (
+            clk   : in std_logic;
+            addr  : in natural range 0 to 2**ADDR_WIDTH - 1;
+            data  : in std_logic_vector(DATA_WIDTH-1 downto 0);
+            we    : in std_logic;
+            q     : out std_logic_vector(DATA_WIDTH-1 downto 0)
+        );
+    end component;
+	 
+    -- LM
+    component LM is
+        port (
+			   funct3  : in  std_logic_vector(2 downto 0);  -- Type de chargement
+				res : in  std_logic_vector(1 downto 0);  -- Les deux bits de poids faibles de l'adresse
+				data : in  std_logic_vector(31 downto 0); -- Données lues de la mémoire
+				dataOut: out std_logic_vector(31 downto 0)  -- Données ajustées à charger
+        );
+    end component;
+
+
 begin
 
     -- Instance du PC
@@ -155,7 +193,10 @@ begin
             aluOp       => aluOp_internal,
             WriteEnable => write_enable_internal,
             load        => load_pc_internal,
-            RI_sel      => RI_sel_internal
+            RI_sel      => RI_sel_internal,
+            loadAcc     => loadAcc_internal,
+            wrMem       => wrMem_internal,
+				lwtype 		=> lwtype_internal
         );
 
     -- Instance de Imm_ext
@@ -166,26 +207,13 @@ begin
             immExt   => immExt_internal
         );
 
-    -- Instance de mux2to1
+    -- Instance de mux2to1 pour choisir entre reg_B et immExt
     u_mux2to1 : mux2to1    
         port map (
             sel => RI_sel_internal,
             mux_in1 => reg_B_internal,
             mux_in2 => immExt_internal,
             mux_out => mux_out_internal
-        );
-
-    -- Instance des registres
-    u_REG : REG
-        port map (
-            clk          => clk,
-            Write_Enable => write_enable_internal,
-            RA           => instr_internal(19 downto 15),  -- Adresse source A
-            RB           => instr_internal(24 downto 20),  -- Adresse source B
-            RW           => instr_internal(11 downto 7),   -- Adresse destination
-            BusW         => alu_result_internal,           -- Résultat ALU
-            BusA         => reg_A_internal,
-            BusB         => reg_B_internal
         );
 
     -- Instance de l'ALU
@@ -196,6 +224,51 @@ begin
             opB   => mux_out_internal,
             res   => alu_result_internal
         );
+
+	 -- Multiplexeur pour sélectionner entre ALU et LM
+	 u_mux2to1_alu_dmem : mux2to1    
+		  port map (
+			   sel     => loadAcc_internal,      -- Choix : LM si LOAD, ALU sinon
+			   mux_in1 => alu_result_internal,   -- Résultat ALU
+			   mux_in2 => dataOut_LM,            -- Résultat LM
+			   mux_out => result_internal        -- Sortie finale
+		  );
+
+     -- Instance des registres
+     u_REG : REG
+          port map (
+               clk          => clk,
+               Write_Enable => write_enable_internal,
+               RA           => instr_internal(19 downto 15),  -- Adresse source A
+               RB           => instr_internal(24 downto 20),  -- Adresse source B
+               RW           => instr_internal(11 downto 7),   -- Adresse destination
+               BusW         => result_internal,               -- Utilise le signal interne
+               BusA         => reg_A_internal,
+               BusB         => reg_B_internal
+          );
+
+	 -- Instance de la mémoire de données (DMEM)
+	 u_DMEM : DMEM
+		  generic map (
+			   DATA_WIDTH => 32,
+			   ADDR_WIDTH => 3
+		  )
+		  port map (
+			   clk  => clk,
+			   addr => 0,
+			   data => reg_B_internal,
+			   we   => wrMem_internal,
+			   q    => dmem_data_out
+		  );
+
+	 -- Instance du module LM pour gérer lb/lh
+	 u_LM : LM
+		  port map (
+				funct3  => lwtype_internal,             -- type de LOAD : lb, lh, lw
+			   res     => alu_result_internal(1 downto 0), -- bits de poids faible de l'adresse
+			   data    => dmem_data_out,             -- données brutes de la mémoire
+			   dataOut => dataOut_LM                 -- données ajustées (octet ou demi-mot)
+		  );
 
     -- Assignation des signaux internes pour déboguer les adresses RA, RB et RW
     RA_internal <= instr_internal(19 downto 15);  -- Debug: RA
@@ -209,10 +282,11 @@ begin
 
     -- Assignation des résultats finaux
     instr <= instr_internal;
-    result <= alu_result_internal;
+    result <= result_internal;
     pc_out <= pc_internal;
     alu_result <= alu_result_internal;
     reg_A <= reg_A_internal;
-    reg_B <= reg_B_internal;
+    reg_B <= reg_B_internal;	 
+
 
 end architecture Behavioral;

@@ -15,12 +15,6 @@ begin
 
     process(instr)
     begin
-        case instr(6 downto 0) is
-            when "0010011" => -- Type I immediate instructions, 12-bit immediate
-                -- Sign-extend the 12-bit immediate by replicating the sign bit (instr(31))
-                immExt <= std_logic_vector(resize(signed(instr(31 downto 20)), 32)); 
-            when others =>
-                immExt <= (others => '0');  -- Default case for non-Type I instructions
-        end case;
+		 immExt <= std_logic_vector(resize(signed(instr(31 downto 20)), 32)); 
     end process;
 end architecture Behavioral;

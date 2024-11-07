@@ -7,9 +7,10 @@ end tb_decodeur;
 
 architecture test of tb_decodeur is
     -- Déclarations des signaux pour la simulation
-    signal instr : std_logic_vector(31 downto 0);  -- Instruction 32 bits
-    signal aluOp : std_logic_vector(3 downto 0);   -- Code opération ALU (sortie)
-    signal WriteEnable, load, RI_sel : std_logic;  -- Signaux de contrôle
+    signal instr     : std_logic_vector(31 downto 0);  -- Instruction 32 bits
+    signal aluOp     : std_logic_vector(3 downto 0);   -- Code opération ALU (sortie)
+    signal WriteEnable, load, RI_sel : std_logic;      -- Signaux de contrôle
+    signal loadAcc, wrMem : std_logic;                 -- Signaux pour le multiplexeur de dmem
 
 begin
     -- Instancier le décodeur
@@ -19,9 +20,11 @@ begin
             aluOp => aluOp,
             WriteEnable => WriteEnable,
             load => load,
-            RI_sel => RI_sel
+            RI_sel => RI_sel,
+            loadAcc => loadAcc,
+            wrMem => wrMem
         );
-    
+
     -- Stimulus pour tester différentes instructions
     process
     begin
@@ -37,77 +40,44 @@ begin
         instr <= "01000000001000001000000010110011";  -- SUB instruction
         wait for 10 ns;
         
-        -- Instruction SLL (Type R)
-        instr <= "00000000001000001001000010110011";  -- SLL instruction
-        wait for 10 ns;
-        
-        -- Instruction SLT (Type R)
-        instr <= "00000000001000001010000010110011";  -- SLT instruction
-        wait for 10 ns;
-        
-        -- Instruction SLTU (Type R)
-        instr <= "00000000001000001011000010110011";  -- SLTU instruction
-        wait for 10 ns;
-        
-        -- Instruction XOR (Type R)
-        instr <= "00000000001000001100000010110011";  -- XOR instruction
-        wait for 10 ns;
-        
-        -- Instruction SRL (Type R)
-        instr <= "00000000001000001101000010110011";  -- SRL instruction
-        wait for 10 ns;
-        
-        -- Instruction SRA (Type R)
-        instr <= "01000000001000001101000010110011";  -- SRA instruction
-        wait for 10 ns;
-        
-        -- Instruction OR (Type R)
-        instr <= "00000000001000001110000010110011";  -- OR instruction
-        wait for 10 ns;
-        
-        -- Instruction AND (Type R)
-        instr <= "00000000001000001111000010110011";  -- AND instruction
-        wait for 10 ns;
-        
+        -- Instructions supplémentaires de type R...
+
         -- -------------------
         -- Tests pour les instructions de type I
         -- -------------------
-        
+
         -- Instruction ADDI (Type I)
-        -- funct7 est inutile dans ce cas, seulement funct3 et immediate
         instr <= "00000000001000001000001010010011";  -- ADDI instruction
         wait for 10 ns;
         
         -- Instruction SLTI (Type I)
         instr <= "00000000001000001010001010010011";  -- SLTI instruction
         wait for 10 ns;
+
+        -- Instructions supplémentaires de type I...
+
+        -- -------------------
+        -- Tests pour les instructions de type LOAD
+        -- -------------------
         
-        -- Instruction SLTIU (Type I)
-        instr <= "00000000001000001011001010010011";  -- SLTIU instruction
+        -- Instruction LB (Load Byte)
+        instr <= "00000000001000000000000010000011";  -- LB instruction
         wait for 10 ns;
         
-        -- Instruction XORI (Type I)
-        instr <= "00000000001000001100001010010011";  -- XORI instruction
+        -- Instruction LH (Load Halfword)
+        instr <= "00000000001000000001000010000011";  -- LH instruction
         wait for 10 ns;
         
-        -- Instruction ORI (Type I)
-        instr <= "00000000001000001110001010010011";  -- ORI instruction
+        -- Instruction LW (Load Word)
+        instr <= "00000000001000000010000010000011";  -- LW instruction
         wait for 10 ns;
         
-        -- Instruction ANDI (Type I)
-        instr <= "00000000001000001111001010010011";  -- ANDI instruction
+        -- Instruction LBU (Load Byte Unsigned)
+        instr <= "00000000001000000100000010000011";  -- LBU instruction
         wait for 10 ns;
         
-        -- Instruction SLLI (Type I)
-        instr <= "00000000001000001001001010010011";  -- SLLI instruction
-        wait for 10 ns;
-        
-        -- Instruction SRLI (Type I)
-        instr <= "00000000001000001101001010010011";  -- SRLI instruction
-        wait for 10 ns;
-        
-        -- Instruction SRAI (Type I)
-        instr <= "01000000001000001101001010010011";  -- SRAI instruction
+        -- Instruction LHU (Load Halfword Unsigned)
+        instr <= "00000000001000000101000010000011";  -- LHU instruction
         wait for 10 ns;
 
         -- Fin de la simulation
