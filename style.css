@@ -240,3 +240,36 @@ body {
     font-size: 0.9rem;
     color: var(--color-em);
 }
+
+/* CSS pour masquer les registres et la mémoire sur mobile */
+@media (max-width: 800px) { 
+    #register-container,
+    #memory-container {
+        display: none;
+    }
+
+    #body {
+        padding: none;
+        margin: none;
+        overflow: hidden;
+    }
+
+
+    #instruction-container {
+        max-width: 80%;
+        overflow-y: auto;
+        max-height: 90vh; /* Limite la hauteur maximale des instructions sur mobile */
+    }
+
+    #output-container {
+        display: none;
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+        max-width: min-content;
+        max-height: 90vh; /* Limite la hauteur maximale de l'output sur mobile */
+    }
+
+    #footer {
+        display: none;
+    }
+}

@@ -193,7 +193,6 @@ function executeInstruction(instr) {
     return `Instruction non supportée ou incomplète: ${instr.toString(16)}`;
 }
 
-// Fonction de simulation pour exécuter chaque instruction en hexadécimal
 function simulate() {
     const instructionsInput = document.getElementById('instruction-input').value.trim().split('\n');
     const outputElement = document.getElementById('output');
@@ -207,7 +206,7 @@ function simulate() {
         registers[i] = i;
     }
 
-    //initialise un premier mot en mémoire 0xFFAABBCC
+    // Initialise un premier mot en mémoire 0xFFAABBCC
     storeWord(0, 0xFFAABBCC);
 
     instructionsInput.forEach((hexInstruction, index) => {
@@ -237,6 +236,12 @@ function simulate() {
 
     updateRegisterDisplay();
     updateMemoryDisplay(); // Affiche la mémoire après chaque simulation
+
+    // Affiche le conteneur de sortie sur mobile après la simulation
+    if (window.innerWidth <= 800) {
+        document.getElementById('output-container').style.display = 'block';
+        document.getElementById('instruction-container').style.display = 'none';
+    }
 }
 
 // Fonction pour mettre à jour l'affichage des registres
