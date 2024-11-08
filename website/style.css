@@ -58,10 +58,11 @@ body {
 #container {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    width: 90%;
+    width: 98%;
     height: 90vh; /* Utilise presque toute la hauteur de la fenêtre */
     gap: 1rem;
     overflow-y: auto; /* Permet le défilement global si nécessaire */
+    padding: 1rem;
 }
 
 /* Sidebar pour les instructions */
@@ -93,7 +94,7 @@ body {
     padding: 0.5rem;
     font-size: 1rem;
     color: var(--color-bg);
-    background-color: var(--color-blue);
+    background-color: var(--color-base02);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -130,7 +131,7 @@ body {
     color: var(--color-base3);
 }
 
-#output-table th,
+#output-table th, 
 #output-table td {
     padding: 0.5rem;
     text-align: left;
@@ -138,12 +139,14 @@ body {
     font-family: 'IBM Plex Mono', monospace;
 }
 
-#output-table tbody tr:nth-child(even) {
+#output-table tbody tr:nth-child(even) { 
     background-color: var(--color-base02);
+    color : var(--color-base3)
 }
 
 #output-table tbody tr:hover {
     background-color: var(--color-base1);
+    color : var(--color-base2)
 }
 
 /* Sidebar pour les registres */
@@ -215,4 +218,25 @@ body {
     #memory-bank {
         grid-template-columns: repeat(1, 1fr);
     }
+}
+
+/* Structure principale pour le layout de la page */
+#page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    flex: 1;
+}
+
+/* Style du footer */
+#footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--color-hl);
+    border-top: 1px solid var(--color-fg);
+    font-size: 0.9rem;
+    color: var(--color-em);
 }

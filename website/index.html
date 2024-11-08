@@ -7,48 +7,60 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
-        <!-- Sidebar gauche pour les instructions -->
-        <div id="instruction-container">
-            <h2>Instructions</h2>
-            <textarea id="instruction-input" rows="20" placeholder="Entrez les instructions RISC-V ici..."></textarea>
-            <button onclick="simulate()">Lancer la simulation</button>
+    <div id="page-container">
+        <div id="content-wrap">
+            <div id="container">
+                <!-- Sidebar gauche pour les instructions -->
+                <div id="instruction-container">
+                    <h2>Instructions</h2>
+                    <textarea id="instruction-input" rows="20" placeholder="Entrez les instructions RISC-V ici..."></textarea>
+                    <button onclick="simulate()">Lancer la simulation</button>
+                </div>
+
+                <!-- Zone centrale pour la sortie -->
+                <div id="output-container">
+                    <h2>Sortie</h2>
+                    <table id="output-table">
+                        <thead>
+                            <tr>
+                                <th>Étape</th>
+                                <th>Instruction</th>
+                                <th>Résultat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="output"></tbody>
+                    </table>
+                </div>
+
+                <!-- Sidebar droite pour les registres -->
+                <div id="register-container">
+                    <h2>Registres</h2>
+                    <div id="register-bank"></div>
+                </div>
+
+                <!-- Zone pour afficher la mémoire -->
+                <div id="memory-container">
+                    <h2>Mémoire (little endian)</h2>
+                    <div id="memory-bank"></div>
+                </div>
+            </div>
         </div>
 
-        <!-- Zone centrale pour la sortie -->
-        <div id="output-container">
-            <h2>Sortie</h2>
-            <table id="output-table">
-                <thead>
-                    <tr>
-                        <th>Étape</th>
-                        <th>Instruction</th>
-                        <th>Résultat</th>
-                    </tr>
-                </thead>
-                <tbody id="output"></tbody>
-            </table>
-        </div>
-
-        <!-- Sidebar droite pour les registres -->
-        <div id="register-container">
-            <h2>Registres</h2>
-            <div id="register-bank"></div>
-        </div>
-
-        <!-- Nouvelle zone pour afficher la mémoire -->
-        <div id="memory-container">
-            <h2>Mémoire</h2>
-            <div id="memory-bank"></div>
-        </div>
+        <footer id="footer">
+            <div style="margin-bottom: 0.5rem;">
+                &copy; <span id="current-year"></span> Matthias Germain
+                <a href="https://github.com/matthiasgermain" target="_blank">GitHub</a>
+            </div>
+        </footer>
+        
     </div>
 
     <script src="script.js"></script>
     <script>
-        // Affiche les registres et la mémoire au chargement de la page
+        document.getElementById("current-year").textContent = new Date().getFullYear();
         window.onload = function() {
             updateRegisterDisplay();
-            updateMemoryDisplay(); // Appelle une fonction pour afficher la mémoire
+            updateMemoryDisplay();
         };
     </script>
 </body>
