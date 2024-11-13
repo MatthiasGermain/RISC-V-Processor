@@ -50,6 +50,9 @@ architecture Behavioral of RISC_V_Processor is
     signal dmem_data_out         : std_logic_vector(31 downto 0);
 	 signal dataOut_LM : std_logic_vector(31 downto 0); -- Sortie ajustée de LM
 	 signal lwtype_internal : std_logic_vector(2 downto 0); -- type de chargement (funct3)
+	 
+	 -- Signal intermédiaire pour l'adresse tronquée de l'ALU
+    signal alu_addr_truncated : natural range 0 to 2**3 - 1;	
 
 
     -- Instances des composants
@@ -75,7 +78,7 @@ architecture Behavioral of RISC_V_Processor is
             DATA_WIDTH  : natural := 32;
             ADDR_WIDTH  : natural := 8;
             MEM_DEPTH   : natural := 100;
-            INIT_FILE   : string  := "add_03.hex"
+            INIT_FILE   : string  := "load_04.hex"
         );
         port (
             address  : in  std_logic_vector(ADDR_WIDTH - 1 downto 0);
@@ -255,8 +258,8 @@ begin
 		  )
 		  port map (
 			   clk  => clk,
-			   addr => 0,
-			   data => reg_B_internal,
+            addr => alu_addr_truncated,  -- Utilisation du signal intermédiaire
+				data => reg_B_internal,
 			   we   => wrMem_internal,
 			   q    => dmem_data_out
 		  );
@@ -286,7 +289,9 @@ begin
     pc_out <= pc_internal;
     alu_result <= alu_result_internal;
     reg_A <= reg_A_internal;
-    reg_B <= reg_B_internal;	 
-
+    reg_B <= reg_B_internal;
+	 
+    -- Assignation de l'adresse à partir des bits de poids faible de alu_result_internal
+    alu_addr_truncated <= to_integer(unsigned(alu_result_internal(2 downto 0))); 
 
 end architecture Behavioral;

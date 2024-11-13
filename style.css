@@ -32,7 +32,7 @@
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-fg: var(--color-base0);
+        --color-fg: var(--color-base00);
         --color-bg: var(--color-base03);
         --color-hl: var(--color-base02);
         --color-em: var(--color-base1);
@@ -93,7 +93,7 @@ body {
 #instruction-container button {
     padding: 0.5rem;
     font-size: 1rem;
-    color: var(--color-bg);
+    color: var(--color-base3); 
     background-color: var(--color-base02);
     border: none;
     border-radius: 4px;
@@ -231,12 +231,12 @@ body {
     flex: 1;
 }
 
-/* Style du footer */
+/* Footer */
 #footer {
     text-align: center;
     padding: 1rem;
     background-color: var(--color-hl);
-    border-top: 1px solid var(--color-fg);
+    border-top: 1px solid var(--color-co);
     font-size: 0.9rem;
     color: var(--color-em);
 }

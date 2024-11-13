@@ -30,13 +30,13 @@ architecture behav of DMEM is
         variable tmp : memory_t := (others => (others => '0'));
     begin 
         tmp(0) := x"FFAABBCC";
-        tmp(1) := x"AAAAAAAA";
-        tmp(2) := x"BBBBBBBB";
-        tmp(3) := x"CCCCCCCC";
-        tmp(4) := x"DDDDDDDD";
-        tmp(5) := x"EEEEEEEE";
-        tmp(6) := x"FAFAFAFA";
-        tmp(7) := x"FBFBFBFB";
+        tmp(1) := x"11223344";
+        tmp(2) := x"55667788";
+        tmp(3) := x"00000000";
+        tmp(4) := x"00000000";
+        tmp(5) := x"00000000";
+        tmp(6) := x"00000000";
+        tmp(7) := x"00000000";
         return tmp;
     end init_ram;	 
 

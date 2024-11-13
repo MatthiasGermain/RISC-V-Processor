@@ -11,6 +11,8 @@ const memory = new Uint8Array(1024); // Mémoire de 1024 octets pour la simulati
 
 //initialise un premier mot en mémoire 0xFFAABBCC
 storeWord(0, 0xFFAABBCC);
+storeWord(4, 0x11223344);
+storeWord(8, 0x55667788);
 
 // Fonctions d'accès en mémoire
 function loadByte(address) {
@@ -208,6 +210,8 @@ function simulate() {
 
     // Initialise un premier mot en mémoire 0xFFAABBCC
     storeWord(0, 0xFFAABBCC);
+    storeWord(4, 0x11223344);
+    storeWord(8, 0x55667788);
 
     instructionsInput.forEach((hexInstruction, index) => {
         const instr = parseInt(hexInstruction, 16); // Convertir hex en entier

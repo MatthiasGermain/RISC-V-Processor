@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulation RISC-V</title>
+    <title>RISC-V Simulation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="page-container">
         <div id="content-wrap">
             <div id="container">
-                <!-- Sidebar gauche pour les instructions -->
+                <!-- Left sidebar for instructions -->
                 <div id="instruction-container">
                     <h2>Instructions</h2>
-                    <textarea id="instruction-input" rows="20" placeholder="Entrez les instructions RISC-V ici..."></textarea>
-                    <button onclick="simulate()">Lancer la simulation</button>
+                    <textarea id="instruction-input" rows="20" placeholder="Enter RISC-V instructions in hexadecimal here..."></textarea>
+                    <button onclick="simulate()">Start Simulation</button>
                 </div>
 
-                <!-- Zone centrale pour la sortie -->
+                <!-- Central area for output -->
                 <div id="output-container">
-                    <h2>Sortie</h2>
+                    <h2>Output</h2>
                     <table id="output-table">
                         <thead>
                             <tr>
-                                <th>Étape</th>
+                                <th>Step</th>
                                 <th>Instruction</th>
-                                <th>Résultat</th>
+                                <th>Result</th>
                             </tr>
                         </thead>
                         <tbody id="output"></tbody>
                     </table>
                 </div>
 
-                <!-- Sidebar droite pour les registres -->
+                <!-- Right sidebar for registers -->
                 <div id="register-container">
-                    <h2>Registres</h2>
+                    <h2>Registers</h2>
                     <div id="register-bank"></div>
                 </div>
 
-                <!-- Zone pour afficher la mémoire -->
+                <!-- Area for displaying memory -->
                 <div id="memory-container">
-                    <h2>Mémoire (little endian)</h2>
+                    <h2>Memory (little endian)</h2>
                     <div id="memory-bank"></div>
                 </div>
             </div>
