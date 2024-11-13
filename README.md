@@ -1,31 +1,49 @@
-# RISC-V-Processor
+# RISC-V Processor Simulation
 
-This repository contains two main components:
+Welcome to the **RISC-V Processor Simulation**! This website simulates a RISC-V processor, allowing users to enter and execute RISC-V machine code instructions in hexadecimal format, with real-time views of register and memory states.
 
-1. **RISC-V Processor (Quartus Project)**:
-    - This folder contains a complete Quartus project for a RISC-V processor, currently supporting the execution of R-type and I-type instructions. The processor design is fully customizable and can be expanded to support additional instruction types as needed.
+🌐 **Access the online simulator**: [RISC-V Processor Simulation](https://matthiasgermain.github.io/RISC-V-Processor/)
 
-2. **Verifython (Python Instruction Tester)**:
-    - Verifython is a Python-based tool used to test a sequence of RISC-V instructions on the processor. The tool interprets machine code instructions, identifies the instruction type, and simulates the execution by displaying the state of the registers after each instruction.
+## Features
 
-### Example Output from Verifython:
+- **RISC-V Instruction Input**: Enter hexadecimal instructions and start the simulation to observe the results.
+- **Register Display**: View real-time updates to the processor's registers as instructions are executed.
+- **Memory Display**: Track memory changes in little-endian mode as each instruction is processed.
+- **Step-by-Step Execution**: Follow each simulation step, displaying the current instruction, results, and the evolving system state.
 
-| #  | Type   | Machine Code | Instruction              | Result   |
-|----|--------|--------------|--------------------------|----------|
-| 1  | I-type | 06400f93     | addi x31, x0, 100        | x31 = 100 |
-| 2  | I-type | 00100093     | addi x1, x0, 1           | x1 = 1    |
-| 3  | R-type | 001080b3     | add x1, x1, x1           | x1 = 2    |
-| 4  | I-type | 00100093     | addi x1, x0, 1           | x1 = 1    |
-| 5  | R-type | 01f080b3     | add x1, x1, x31          | x1 = 101  |
-| 6  | I-type | 00200113     | addi x2, x0, 2           | x2 = 2    |
+## How to Use
 
-### How to Use
+1. **Open the Website**: Go to [RISC-V Processor Simulation](https://matthiasgermain.github.io/RISC-V-Processor/).
+2. **Enter Instructions**: In the *Instructions* section, input your desired instructions in hexadecimal format. 
+   - **Example Instructions**:
+     ```
+     00400093
+     00809093
+     00308093
+     00809093
+     00208093
+     00809093
+     00108093
+     00500113
+     00811113
+     00410113
+     00811113
+     00310113
+     00811113
+     00210113
+     00600193
+     00819193
+     00518193
+     00819193
+     00418193
+     00819193
+     00318193
+     00700213
+     ```
+3. **Run the Simulation**: Click **Start Simulation** to execute the instructions.
+4. **Observe the Results**: Check the *Registers* and *Memory* sections to see the impact of each instruction on the processor’s state.
 
-- **Quartus Project**: Open the Quartus project using Intel Quartus Prime software. You can synthesize, simulate, or program the design onto an FPGA board.
-  
-- **Verifython**: Run the Python script to simulate instruction execution by feeding it machine code instructions in hexadecimal format. The results will display the instruction type, operation, and the final value of the modified registers.
+## Author
 
-### Future Work
-- Expanding instruction set support.
-- Integration with FPGA for real-time instruction execution.
-- Additional testing features in Verifython.
+Project created by **Matthias Germain**.  
+Visit the GitHub profile: [matthiasgermain](https://github.com/matthiasgermain)
