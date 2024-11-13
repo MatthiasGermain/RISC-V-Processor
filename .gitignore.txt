@@ -1,0 +1,3 @@
+Rstruction/ARCHI/simulation/
+Rstruction/ARCHI/output_files
+Rstruction/ARCHI/db
