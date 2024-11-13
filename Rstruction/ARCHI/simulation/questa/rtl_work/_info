@@ -1,0 +1,493 @@
+m255
+K4
+z2
+!s99 nomlopt
+!s11e vcom 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/simulation/questa
+T_opt
+!s110 1731512103
+VTES4OEX>PDI[4iV<TGFbD0
+04 30 10 work risc_v_processor_simplified_tb behavioral 1
+=1-a4bb6d289a60-6734c725-c1-ce4
+!s124 OEM25U12 
+o-quiet -auto_acc_if_foreign -work work -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L cyclonev -L cyclonev_hssi -L rtl_work -L work +acc
+tCvgOpt 0
+n@_opt
+OL;O;2021.2;73
+Ealu
+Z1 w1731509228
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+R0
+Z5 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd
+Z6 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd
+l0
+L5 1
+V2e632RSWAMX=0l4N9=U;V1
+!s100 [QfU]Mc0Od9KcI8J^KO6m1
+Z7 OL;C;2021.2;73
+31
+Z8 !s110 1731512096
+!i10b 1
+Z9 !s108 1731512096.000000
+Z10 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd|
+Z11 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/ALU.vhd|
+!i113 0
+Z12 o-93 -work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+DEx4 work 3 alu 0 22 2e632RSWAMX=0l4N9=U;V1
+!i122 1
+l15
+L14 40
+VH=8Rdz2A6UK^_LH]`:U4F3
+!s100 11n1X_[U2>LIma@J@4ZUe3
+R7
+31
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 0
+R12
+R13
+Edecodeur
+R1
+R2
+R3
+R4
+!i122 0
+R0
+Z14 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd
+Z15 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd
+l0
+L5 1
+VXi]UgBS]2?o;9X1HikYf:0
+!s100 ;Z=L0FK[n7J4oYUgSB?7H1
+R7
+31
+Z16 !s110 1731512095
+!i10b 1
+Z17 !s108 1731512094.000000
+Z18 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd|
+Z19 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/decodeur.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 8 decodeur 0 22 Xi]UgBS]2?o;9X1HikYf:0
+!i122 0
+l19
+L18 74
+V0kScPGImD3U1UTL2ZVShI2
+!s100 Md=;Fa`M<Ck7E8LQDUTLR1
+R7
+31
+R16
+!i10b 1
+R17
+R18
+R19
+!i113 0
+R12
+R13
+Edmem
+R1
+R2
+R3
+R4
+!i122 2
+R0
+Z20 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd
+Z21 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd
+l0
+L5 1
+VB^OZ8kzVNMWal7emC0a5=0
+!s100 kEQ69QUog1QQ]HVfOLn9M2
+R7
+31
+R8
+!i10b 1
+R9
+Z22 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd|
+Z23 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/DMEM.vhd|
+!i113 0
+R12
+R13
+Abehav
+R2
+R3
+R4
+DEx4 work 4 dmem 0 22 B^OZ8kzVNMWal7emC0a5=0
+!i122 2
+l46
+L21 42
+VMASCa]eAWi_HN:HITU_fn0
+!s100 =97H^iO;iDeJ48PzJ:oQP1
+R7
+31
+R8
+!i10b 1
+R9
+R22
+R23
+!i113 0
+R12
+R13
+Eimem_file
+R1
+R2
+R3
+R4
+!i122 5
+R0
+Z24 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd
+Z25 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd
+l0
+L6 1
+V:eXDZ<?@dXgjUKUgl@6@d3
+!s100 :`Qd`S8YAYH6VemRd_dQJ1
+R7
+31
+Z26 !s110 1731512097
+!i10b 1
+R9
+Z27 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd|
+Z28 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/IMEM_FILE.vhd|
+!i113 0
+R12
+R13
+Abehav
+R2
+R3
+R4
+DEx4 work 9 imem_file 0 22 :eXDZ<?@dXgjUKUgl@6@d3
+!i122 5
+l70
+L21 65
+V=oKbU5F:9lXM[oIhLI@Ea3
+!s100 =SM9hVBX6K`fiE__HK<Wl1
+R7
+31
+R26
+!i10b 1
+R9
+R27
+R28
+!i113 0
+R12
+R13
+Eimm_ext
+R1
+R2
+R3
+R4
+!i122 7
+R0
+Z29 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd
+Z30 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd
+l0
+L5 1
+VWT3eVPzH`X:<jKfaCE;R22
+!s100 dnEa6Qmj7>gNA1PYe2o:l3
+R7
+31
+R26
+!i10b 1
+Z31 !s108 1731512097.000000
+Z32 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd|
+Z33 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/Imm_ext.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 7 imm_ext 0 22 WT3eVPzH`X:<jKfaCE;R22
+!i122 7
+l14
+L13 8
+V6^__=YMERnJ;123aPaAmP0
+!s100 VK<iZN`WgkR;6nn86D?083
+R7
+31
+R26
+!i10b 1
+R31
+R32
+R33
+!i113 0
+R12
+R13
+Elm
+R1
+R2
+R3
+R4
+!i122 9
+R0
+Z34 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd
+Z35 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd
+l0
+L6 1
+VeUXXXaHieAY;TC:J5LeB?2
+!s100 NdBSa4J3oiPD=JXC15VLS0
+R7
+31
+R26
+!i10b 1
+R31
+Z36 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd|
+Z37 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/LM.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 2 lm 0 22 eUXXXaHieAY;TC:J5LeB?2
+!i122 9
+l19
+L16 81
+VXVNAH^eX9^lP<^M;jcg3d2
+!s100 =YLe<F]S]cI0P`5V=<Q532
+R7
+31
+R26
+!i10b 1
+R31
+R36
+R37
+!i113 0
+R12
+R13
+Emux2to1
+Z38 w1731509229
+R3
+R4
+!i122 8
+R0
+Z39 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd
+Z40 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd
+l0
+L4 1
+VL0cn;99?d;bBTaQhj8@QP2
+!s100 dW=gHbBan=[R4z^0o<TON2
+R7
+31
+R26
+!i10b 1
+R31
+Z41 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd|
+Z42 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/mux2to1.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R3
+R4
+DEx4 work 7 mux2to1 0 22 L0cn;99?d;bBTaQhj8@QP2
+!i122 8
+l17
+L16 11
+VKOFnNK3_VEW^k<^hlcYY@2
+!s100 m4FhLoTN]J1Q:BV]e2T]H3
+R7
+31
+R26
+!i10b 1
+R31
+R41
+R42
+!i113 0
+R12
+R13
+Epc
+R1
+R2
+R3
+R4
+!i122 3
+R0
+Z43 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd
+Z44 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd
+l0
+L5 1
+Vbcn70e_dHUFOG7mFZjHeI1
+!s100 :EHm4zH?4d3clK::ZX0O22
+R7
+31
+R8
+!i10b 1
+R9
+Z45 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd|
+Z46 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/PC.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 2 pc 0 22 bcn70e_dHUFOG7mFZjHeI1
+!i122 3
+l22
+L19 27
+V:8`eQWgc6[PN@bQ5DzA1]1
+!s100 LA>@>DMPF19Ec`2d4>PZe3
+R7
+31
+R8
+!i10b 1
+R9
+R45
+R46
+!i113 0
+R12
+R13
+Ereg
+R1
+R2
+R3
+R4
+!i122 4
+R0
+Z47 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd
+Z48 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd
+l0
+L5 1
+V4GZ2SAMI<Z4V9J]G627lB2
+!s100 :IEX5UWN@Kl:Qi8`Z4f5a0
+R7
+31
+R8
+!i10b 1
+R9
+Z49 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd|
+Z50 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/REG.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 3 reg 0 22 4GZ2SAMI<Z4V9J]G627lB2
+!i122 4
+l39
+L24 34
+VFkSi=M1BW_fikK_Zoghe[3
+!s100 ezAhVc_oVA=ockRV6GeT50
+R7
+31
+R8
+!i10b 1
+R9
+R49
+R50
+!i113 0
+R12
+R13
+Erisc_v_processor
+R1
+R2
+R3
+R4
+!i122 6
+R0
+Z51 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd
+Z52 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd
+l0
+L5 1
+VVSFeR]i0PL53M`cV:^RB]2
+!s100 2gcoR9Obm[M9A5fz7=hh]1
+R7
+31
+R26
+!i10b 1
+R31
+Z53 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd|
+Z54 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 16 risc_v_processor 0 22 VSFeR]i0PL53M`cV:^RB]2
+!i122 6
+l172
+L27 271
+ViL3?cUf_UJe6=;J:M[Hfe2
+!s100 Z<4K]]8eO``a4S8e1S_L71
+R7
+31
+R26
+!i10b 1
+R31
+R53
+R54
+!i113 0
+R12
+R13
+Erisc_v_processor_simplified_tb
+R1
+R2
+R3
+R4
+!i122 10
+R0
+Z55 8C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd
+Z56 FC:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd
+l0
+L5 1
+VDM<S[Ckeeb<6hQUj<jOj_2
+!s100 T6=olF2fH6nWL9Zn^;7AK3
+R7
+31
+Z57 !s110 1731512098
+!i10b 1
+R31
+Z58 !s90 -reportprogress|300|-93|-work|work|C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd|
+Z59 !s107 C:/Users/germa/OneDrive/Documents/Documents/TELECOM NANCY/3A/CDSP/TP/RISC-V-Processor/Rstruction/ARCHI/RISC_V_Processor_simplified_tb.vhd|
+!i113 0
+R12
+R13
+Abehavioral
+R2
+R3
+R4
+DEx4 work 30 risc_v_processor_simplified_tb 0 22 DM<S[Ckeeb<6hQUj<jOj_2
+!i122 10
+l43
+L8 62
+V^jQKLZ4Y6[[kH>SdCN:Fk0
+!s100 TRQa9F7`9mXM1X4Pa7T=^0
+R7
+31
+R57
+!i10b 1
+R31
+R58
+R59
+!i113 0
+R12
+R13
