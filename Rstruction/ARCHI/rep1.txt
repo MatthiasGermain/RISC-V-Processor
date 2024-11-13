@@ -1,3 +1,0 @@
-alias rs1 : std_logic_vector(4 downto 0) is instr(19 downto 15);
-alias rs2 : std_logic_vector(4 downto 0) is instr(24 downto 20);
-alias rd : std_logic_vector(4 downto 0) is instr(11 downto 7);
